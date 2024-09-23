@@ -3,7 +3,6 @@ const dotenv = require('dotenv');
 const authRoutes = require('./api/routes/authRoutes');
 const expenseRoutes = require('./api/routes/expenseRoutes');
 const groupRoutes = require('./api/routes/groupRoutes');
-const serverless = require("serverless-http");
 
 dotenv.config();
 const app = express();
@@ -18,4 +17,3 @@ app.use('/', ()=> {
 })
 
 module.exports = app;
-module.exports.handler = serverless(app);
