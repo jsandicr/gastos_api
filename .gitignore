@@ -81,3 +81,5 @@ docker-compose.yml
 .DS_Store
 
 creds.json
+# Local Netlify folder
+.netlify
