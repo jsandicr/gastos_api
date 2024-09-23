@@ -83,3 +83,5 @@ docker-compose.yml
 creds.json
 # Local Netlify folder
 .netlify
+
+.vercel
