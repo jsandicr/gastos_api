@@ -1,8 +1,8 @@
 const express = require('express');
 const dotenv = require('dotenv');
-const authRoutes = require('./routes/authRoutes');
-const expenseRoutes = require('./routes/expenseRoutes');
-const groupRoutes = require('./routes/groupRoutes');
+const authRoutes = require('./api/routes/authRoutes');
+const expenseRoutes = require('./api/routes/expenseRoutes');
+const groupRoutes = require('./api/routes/groupRoutes');
 
 dotenv.config();
 const app = express();
@@ -18,4 +18,4 @@ app.listen(PORT, () => {
   console.log(`Servidor corriendo en el puerto ${PORT}`);
 });
 
-module.exports = app;
+module.exports = app
