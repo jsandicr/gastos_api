@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const groupController = require('../controllers/groupController');
-const authenticateToken = require('../middlewares/authMiddleware');
+const {authenticateToken} = require('../controllers/authController');
 
 router.get('/:email', authenticateToken, groupController.getGroupsByEmail);
 router.get('/join/:code/:email', authenticateToken, groupController.joinGroup);

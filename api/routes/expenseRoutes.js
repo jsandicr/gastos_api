@@ -1,6 +1,6 @@
 const express = require('express');
 const { addExpense, closeExpense, getExpenses, deleteExpense, updateExpense } = require('../controllers/expenseController');
-const authenticateToken = require('../middlewares/authMiddleware');
+const {authenticateToken} = require('../controllers/authController');
 const router = express.Router();
 
 router.post('/add/:idGroup/:email', authenticateToken, addExpense);

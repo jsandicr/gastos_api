@@ -2,6 +2,26 @@ const jwt = require('jsonwebtoken');
 const { jwtSecret } = require('../config/config');
 const users = require('../models/authModel');
 
+const authenticateToken = (req, res, next) => {
+    const authHeader = req.header('Authorization');
+    console.log('Authorization Header:', authHeader); // Agrega un log para verificar si el encabezado llega en producción
+
+    const token = authHeader?.split(' ')[1];
+    if (!token) {
+        console.log('No token provided');
+        return res.status(401).json({ error: 'Token requerido' });
+    }
+
+    jwt.verify(token, jwtSecret, (err, user) => {
+        if (err) {
+        console.log('Invalid token', err);
+        return res.status(403).json({ error: 'Token inválido' });
+        }
+        req.user = user;
+        next();
+    });
+};
+
 const register = async (req, res) => {
     const { email, password, name } = req.body;
     try {
@@ -37,4 +57,4 @@ const login = async (req, res) => {
     }
 };
 
-module.exports = { register, login };
+module.exports = { register, login, authenticateToken };
